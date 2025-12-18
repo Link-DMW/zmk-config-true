@@ -2,8 +2,19 @@
 #include "my_keyboard.dtsi"
 
   /{
+  
+    behaviors {
+        // 定义紧急解锁行为
+        emergency_unlock: emergency_unlock {
+            compatible = "zmk,behavior-slashed-lock";
+            label = "EMERGENCY_UNLOCK";
+            #binding-cells = <0>;
+        };
+    };
+
    chosen {
         zmk,kscan = &my_kscan;
+        zmk,emergency-unlock = &emergency_unlock;
        zmk,physical-layout = &physical_layout0;
    };
 
