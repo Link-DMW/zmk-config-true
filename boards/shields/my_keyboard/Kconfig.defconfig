@@ -4,6 +4,12 @@
 if SHIELD_MY_KEYBOARD
 
 config ZMK_KEYBOARD_NAME
-    default "my_keyboard"
+    default "t# Copyright (c) 2021 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+if SHIELD_MY_KEYBOARD
+
+config ZMK_KEYBOARD_NAME
+    default "tini_Keyboard"
 
 endif
