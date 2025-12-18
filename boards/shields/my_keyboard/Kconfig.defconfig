@@ -6,8 +6,9 @@ if SHIELD_MY_KEYBOARD
 config ZMK_KEYBOARD_NAME
     default "my_Keyboard"
 
-config ZMK_STUDIO_EMERGENCY_UNLOCK
-    bool "Enable emergency unlock key"
+config ZMK_STUDIO_WITH_LOCAL_UNLOCK
+    bool "Enable ZMK Studio but keep local unlock key"
     default y
+    depends on ZMK_STUDIO
 
 endif
