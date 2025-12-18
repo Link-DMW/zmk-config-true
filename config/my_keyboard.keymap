@@ -15,7 +15,7 @@
                 // |CTRL.Z |win.X|ALT.C| 2.V |     |1.SPACE|     |  B  |  N  |  M  |
                 // --------------------------------------------------------------
 
-                &mt TAB Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp U  &kp O  &studio_unlock        
+                &mt TAB Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp U  &kp O   &sl        
                 // 第二行 (Row 1) - 回车键在L键右侧
                 &mt LSHIFT A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp ENTER
                 // 第三行 (Row 2) - 空格键在V和B键之间
