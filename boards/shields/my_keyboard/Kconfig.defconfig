@@ -10,6 +10,6 @@ config ZMK_KEYBOARD_NAME
 if SHIELD_MY_KEYBOARD
 
 config ZMK_KEYBOARD_NAME
-    default "tini_Keyboard"
+    default "my_Keyboard"
 
 endif
