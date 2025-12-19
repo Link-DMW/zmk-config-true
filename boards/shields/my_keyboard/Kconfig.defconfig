@@ -4,7 +4,7 @@
 if SHIELD_MY_KEYBOARD
 
 config ZMK_KEYBOARD_NAME
-    default "my_Keyboard"
+    default "tini_Keyboard"
 
 config ZMK_STUDIO_WITH_LOCAL_UNLOCK
     bool "Enable ZMK Studio but keep local unlock key"
