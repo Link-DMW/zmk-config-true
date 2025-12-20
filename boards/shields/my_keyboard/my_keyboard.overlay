@@ -2,12 +2,12 @@
 
 / {
     chosen {
-        zmk,kscan = &my_kscan;
+        zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,physical-layout = &physical_layout0;  // 这是解锁 ZMK Studio 的关键
+        zmk,physical-layout = &physical_layout0;  // 添加这行
     };
     
-    default_transform: keymap_transform0 {
+    default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <10>;
         rows = <3>;
@@ -18,9 +18,8 @@
         >;
     };
     
-    my_kscan: kscan0 {
+    kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
         diode-direction = "col2row";
         
         row-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>,
@@ -39,51 +38,48 @@
                     <&gpio0 29 GPIO_ACTIVE_HIGH>;
     };
     
-    // 物理布局配置 - ZMK Studio 需要这个
+    // 添加物理布局节点 - ZMK Studio 必需
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
-        display-name = "My 30-key Keyboard";
-        kscan = <&my_kscan>;
-        transform = <&default_transform>;
+        display-name = "tini_keyboard";
         
-        // 定义物理按键的位置（以毫米为单位）
-        // 格式: row, column, x, y, width, height
+        // 定义按键布局
         layout {
             // 第0行
-            key0_0  { row = <0>; column = <0>; x = <0>;   y = <0>;   width = <19>; height = <19>; };
-            key0_1  { row = <0>; column = <1>; x = <21>;  y = <0>;   width = <19>; height = <19>; };
-            key0_2  { row = <0>; column = <2>; x = <42>;  y = <0>;   width = <19>; height = <19>; };
-            key0_3  { row = <0>; column = <3>; x = <63>;  y = <0>;   width = <19>; height = <19>; };
-            key0_4  { row = <0>; column = <4>; x = <84>;  y = <0>;   width = <19>; height = <19>; };
-            key0_5  { row = <0>; column = <5>; x = <105>; y = <0>;   width = <19>; height = <19>; };
-            key0_6  { row = <0>; column = <6>; x = <126>; y = <0>;   width = <19>; height = <19>; };
-            key0_7  { row = <0>; column = <7>; x = <147>; y = <0>;   width = <19>; height = <19>; };
-            key0_8  { row = <0>; column = <8>; x = <168>; y = <0>;   width = <19>; height = <19>; };
-            key0_9  { row = <0>; column = <9>; x = <189>; y = <0>;   width = <19>; height = <19>; };
+            key_0_0 { row = <0>; column = <0>; };
+            key_0_1 { row = <0>; column = <1>; };
+            key_0_2 { row = <0>; column = <2>; };
+            key_0_3 { row = <0>; column = <3>; };
+            key_0_4 { row = <0>; column = <4>; };
+            key_0_5 { row = <0>; column = <5>; };
+            key_0_6 { row = <0>; column = <6>; };
+            key_0_7 { row = <0>; column = <7>; };
+            key_0_8 { row = <0>; column = <8>; };
+            key_0_9 { row = <0>; column = <9>; };
             
             // 第1行
-            key1_0  { row = <1>; column = <0>; x = <0>;   y = <21>;  width = <19>; height = <19>; };
-            key1_1  { row = <1>; column = <1>; x = <21>;  y = <21>;  width = <19>; height = <19>; };
-            key1_2  { row = <1>; column = <2>; x = <42>;  y = <21>;  width = <19>; height = <19>; };
-            key1_3  { row = <1>; column = <3>; x = <63>;  y = <21>;  width = <19>; height = <19>; };
-            key1_4  { row = <1>; column = <4>; x = <84>;  y = <21>;  width = <19>; height = <19>; };
-            key1_5  { row = <1>; column = <5>; x = <105>; y = <21>;  width = <19>; height = <19>; };
-            key1_6  { row = <1>; column = <6>; x = <126>; y = <21>;  width = <19>; height = <19>; };
-            key1_7  { row = <1>; column = <7>; x = <147>; y = <21>;  width = <19>; height = <19>; };
-            key1_8  { row = <1>; column = <8>; x = <168>; y = <21>;  width = <19>; height = <19>; };
-            key1_9  { row = <1>; column = <9>; x = <189>; y = <21>;  width = <19>; height = <19>; };
+            key_1_0 { row = <1>; column = <0>; };
+            key_1_1 { row = <1>; column = <1>; };
+            key_1_2 { row = <1>; column = <2>; };
+            key_1_3 { row = <1>; column = <3>; };
+            key_1_4 { row = <1>; column = <4>; };
+            key_1_5 { row = <1>; column = <5>; };
+            key_1_6 { row = <1>; column = <6>; };
+            key_1_7 { row = <1>; column = <7>; };
+            key_1_8 { row = <1>; column = <8>; };
+            key_1_9 { row = <1>; column = <9>; };
             
             // 第2行
-            key2_0  { row = <2>; column = <0>; x = <0>;   y = <42>;  width = <19>; height = <19>; };
-            key2_1  { row = <2>; column = <1>; x = <21>;  y = <42>;  width = <19>; height = <19>; };
-            key2_2  { row = <2>; column = <2>; x = <42>;  y = <42>;  width = <19>; height = <19>; };
-            key2_3  { row = <2>; column = <3>; x = <63>;  y = <42>;  width = <19>; height = <19>; };
-            key2_4  { row = <2>; column = <4>; x = <84>;  y = <42>;  width = <19>; height = <19>; };
-            key2_5  { row = <2>; column = <5>; x = <105>; y = <42>;  width = <19>; height = <19>; };
-            key2_6  { row = <2>; column = <6>; x = <126>; y = <42>;  width = <19>; height = <19>; };
-            key2_7  { row = <2>; column = <7>; x = <147>; y = <42>;  width = <19>; height = <19>; };
-            key2_8  { row = <2>; column = <8>; x = <168>; y = <42>;  width = <19>; height = <19>; };
-            key2_9  { row = <2>; column = <9>; x = <189>; y = <42>;  width = <19>; height = <19>; };
+            key_2_0 { row = <2>; column = <0>; };
+            key_2_1 { row = <2>; column = <1>; };
+            key_2_2 { row = <2>; column = <2>; };
+            key_2_3 { row = <2>; column = <3>; };
+            key_2_4 { row = <2>; column = <4>; };
+            key_2_5 { row = <2>; column = <5>; };
+            key_2_6 { row = <2>; column = <6>; };
+            key_2_7 { row = <2>; column = <7>; };
+            key_2_8 { row = <2>; column = <8>; };
+            key_2_9 { row = <2>; column = <9>; };
         };
     };
 };
