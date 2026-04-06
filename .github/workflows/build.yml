@@ -4,4 +4,23 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Update ZMK submodule to latest
+        run: |
+          cd zephyr
+          git fetch origin
+          git checkout main
+          git pull
+          cd ..
+          git add zephyr
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Auto-update ZMK submodule" || echo "No changes"
+
+      - name: Run official build workflow
+        uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
