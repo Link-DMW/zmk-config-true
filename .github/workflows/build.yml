@@ -1,41 +1,6 @@
 name: Build ZMK firmware
-
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container: zmkfirmware/zephyr-west-action:latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Update ZMK submodule to latest main
-        run: |
-          cd zephyr
-          git fetch origin
-          git checkout main
-          git pull
-          cd ..
-          git add zephyr
-          # 可选：提交更新（仅当有变化时）
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "Auto-update ZMK submodule to main" || echo "No changes to commit"
-          # 重新初始化 west 模块
-          west update
-
-      - name: Parse matrix from build.yaml
-        id: matrix
-        uses: zmkfirmware/zmk/.github/actions/build-yaml@main
-
-      - name: Build
-        uses: zmkfirmware/zmk/.github/actions/build@main
-        with:
-          board: ${{ matrix.board }}
-          shield: ${{ matrix.shield }}
-          snippet: ${{ matrix.snippet }}
-          cmake-args: ${{ matrix.cmake-args }}
-          artifact-name: ${{ matrix.artifact-name }}
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
